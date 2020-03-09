@@ -76,7 +76,7 @@ class Login extends Model{
                     $this->panelContent_1='Welcome - your login has been successful';      
                 }
                 else{ //if user is not logged in they see some info about bootstrap                                   
-                    $this->panelContent_1 = '**Coding Required**Put the code to display the form here';  //You will need to create an external form and use PHP function file_get_contents()
+                    $this->panelContent_1 = file_get_contents('forms/form_login.html');  //You will need to create an external form and use PHP function file_get_contents()
                 } 
         }//end METHOD - //set the panel 1 content        
 
@@ -99,7 +99,9 @@ class Login extends Model{
         public function setPanelContent_3(){ //set the panel 2 content
            
             //TODO - Put code here to prepare panel content string. 
-            $this->panelContent_3='**Coding Required** This panel output should depend on whether the login button has been pressed on the form. If it has been pressed it should display the values entered for username and password. ';
+            $this->panelContent_3= 'UserName:'. $this->postArray['ID'] ."<br>". 
+               'Password:'. $this->postArray['Password'];
+    
         }  //end METHOD - //set the panel 3 content        
        
 
@@ -117,4 +119,3 @@ class Login extends Model{
 
         
 }//end class
-        

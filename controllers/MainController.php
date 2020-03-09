@@ -161,8 +161,8 @@ class MainController extends Controller {
                     break;
                 case 'login':
                     //create objects to generate view content
-                    $login = new UnderConstruction($this->loggedin, $this->pageTitle, strtoupper($this->getArray['pageID']));
-//                    $login = new Login($this->postArray, $this->pageTitle, strtoupper($this->getArray['pageID']), $this->db, $this->loggedin);
+                    //$login = new UnderConstruction($this->loggedin, $this->pageTitle, strtoupper($this->getArray['pageID']));
+                    $login = new Login($this->postArray, $this->pageTitle, strtoupper($this->getArray['pageID']), $this->db, $this->loggedin);
                     
                     $navigation = new Navigation($this->loggedin, $this->getArray['pageID']);
                     array_push($this->mainControllerObjects,$login,$navigation);
