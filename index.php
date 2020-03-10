@@ -23,6 +23,7 @@ include_once 'models/Home.php';
 include_once 'models/UnderConstruction.php';
 include_once 'models/Calculator.php';
 include_once 'models/Navigation.php';
+include_once 'models/Clinton.php';
 include_once 'models/Student.php';
 
 //include_once 'models/Session.php';

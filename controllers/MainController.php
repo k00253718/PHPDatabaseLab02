@@ -59,7 +59,9 @@ class MainController extends Controller {
                 case "home":
                     //create objects to generate view content
                     $home = new Home($this->loggedin, $this->pageTitle, strtoupper($this->getArray['pageID']));
+                    
                     $navigation = new Navigation($this->loggedin, $this->getArray['pageID']);
+                    
                     array_push($this->mainControllerObjects,$home,$navigation);
 
                     //get the content from the navigation model - put into the $data array for the view:
@@ -159,6 +161,30 @@ class MainController extends Controller {
                     //update the view
                     include_once 'views/view_navbar_2_panel.php'; //load the view
                     break;
+                case 'clinton':
+                    
+                    //create objects to generate view content
+                    $clinton = new Clinton($this->loggedin, $this->pageTitle, strtoupper($this->getArray['pageID']));
+                    $navigation = new Navigation($this->loggedin, $this->getArray['pageID']);
+                    array_push($this->mainControllerObjects,$clinton,$navigation);
+
+                    //get the content from the navigation model - put into the $data array for the view:
+                    $data['menuNav'] = $navigation->getMenuNav();       // an array of menu items and associated URLS
+                    //get the content from the page content model  - put into the $data array for the view:
+                    $data['pageTitle'] = $clinton->getPageTitle();
+                    $data['pageHeading'] = $clinton->getPageHeading();
+                    $data['panelHeadRHS'] = $clinton->getPanelHead_3(); // A string containing the RHS panel heading/title
+                    $data['panelHeadLHS'] = $clinton->getPanelHead_1(); // A string containing the LHS panel heading/title
+                    $data['panelHeadMID'] = $clinton->getPanelHead_2();
+                    $data['stringLHS'] = $clinton->getPanelContent_1();     // A string intended of the Left Hand Side of the page
+                    $data['stringMID'] = $clinton->getPanelContent_2();     // A string intended of the Left Hand Side of the page
+                    $data['stringRHS'] = $clinton->getPanelContent_3();     // A string intended of the Right Hand Side of the page
+                    $this->viewData = $data;  //put the content array into a class property for diagnostic purposes
+                    //update the view
+                    include_once 'views/view_navbar_3_panel.php'; //load the view
+                    break;
+                    
+                    
                 case 'login':
                     //create objects to generate view content
                     //$login = new UnderConstruction($this->loggedin, $this->pageTitle, strtoupper($this->getArray['pageID']));
